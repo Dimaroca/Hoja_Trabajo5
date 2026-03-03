@@ -5,10 +5,10 @@ import statistics
 RANDOM_SEED = 42
 
 INTERVAL = 10
-PROCESSES = 25
+PROCESSES = 200
 
 RAM_TOTAL = 100
-CPUS = 1
+CPUS = 2
 INSTR_PER_QUANTUM = 3
 
 def log(env, msg):
