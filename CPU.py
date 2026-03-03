@@ -11,10 +11,14 @@ RAM_TOTAL = 100
 CPUS = 2
 INSTR_PER_QUANTUM = 3
 
+
 def log(env, msg):
+    """Prints an event with the current simulation time."""
     print("%.3f:" % env.now, msg)
 
+
 def process(env, pid, RAM, CPU, IO, quantum, times):
+    """Simulates a process lifecycle and records its total execution time."""
 
     start = env.now
     mem = random.randint(1, 10)
@@ -66,6 +70,7 @@ def process(env, pid, RAM, CPU, IO, quantum, times):
 
 
 def generate(env, n, interval, RAM, CPU, IO, quantum, times):
+    """Creates processes with exponential inter-arrival time."""
 
     for i in range(n):
         env.process(process(env, i, RAM, CPU, IO, quantum, times))
@@ -74,6 +79,7 @@ def generate(env, n, interval, RAM, CPU, IO, quantum, times):
 
 
 def run(n, interval, ram, count, quantum):
+    """Runs the simulation and prints average and standard deviation."""
 
     random.seed(RANDOM_SEED)
 
@@ -95,8 +101,8 @@ def run(n, interval, ram, count, quantum):
     print("\nRESULTS")
     print("Interval:", interval)
     print("Processes:", n)
-    print("Average time:", round(mean,2))
-    print("Standard deviation:", round(std,2))
+    print("Average time:", round(mean, 2))
+    print("Standard deviation:", round(std, 2))
 
 
 run(PROCESSES, INTERVAL, RAM_TOTAL, CPUS, INSTR_PER_QUANTUM)
